@@ -8,7 +8,7 @@ export const btnPrimary = "mw-btn-primary";
 export const btnGhost = "mw-btn-ghost";
 
 export function BrandMark({ compact = false }: { compact?: boolean }) {
-  return <Link to="/" className="mw-brand" aria-label="Menu-Wave home"><span className="mw-brand-mark" aria-hidden="true"><span>M</span></span>{!compact && <span>Menu-Wave</span>}</Link>;
+  return <Link to="/" className="mw-brand" aria-label="Menu-Wave home"><img src="/menu-wave-logo.png" className="mw-brand-mark" alt="" aria-hidden="true" />{!compact && <span>Menu-Wave</span>}</Link>;
 }
 
 const flow = [
@@ -32,7 +32,6 @@ export function FlowVisual({ title = "One order. One smooth flow." }: { title?: 
       <motion.span className="mw-flow-dot" animate={{offsetDistance:["0%","100%"]}} transition={{duration:4.2,repeat:Infinity,ease:"easeInOut"}} />
       <div className="mw-flow-icons">{flow.map(({icon:Icon,label},i)=><motion.div key={label} className="mw-flow-node" initial={{opacity:0,y:10}} animate={{opacity:1,y:0}} transition={{delay:.25+i*.13}}><span><Icon size={18}/></span><small>{label}</small></motion.div>)}</div>
     </div>
-    <div className="mw-auth-proof"><span>QR ordering</span><span>Live kitchen flow</span><span>Order tracking</span></div>
   </div>;
 }
 

@@ -56,10 +56,12 @@ const featureLabels: Record<string, string> = {
 
 function BrandMark({ small = false }: { small?: boolean }) {
   return (
-    <span className={`brand-mark ${small ? "brand-mark-small" : ""}`} aria-hidden="true">
-      <span className="brand-mark-fork">M</span>
-      <span className="brand-mark-wave" />
-    </span>
+    <img
+      src="/menu-wave-logo.png"
+      alt=""
+      aria-hidden="true"
+      className={`brand-mark ${small ? "brand-mark-small" : ""}`}
+    />
   );
 }
 
