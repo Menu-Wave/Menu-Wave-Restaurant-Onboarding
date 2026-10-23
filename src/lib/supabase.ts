@@ -3,9 +3,13 @@ import { createClient } from "@supabase/supabase-js";
 export const SUPABASE_URL = import.meta.env.VITE_SUPABASE_URL ?? "https://wxlhhisfexcltjpvcljo.supabase.co";
 export const SUPABASE_ANON_KEY =
   import.meta.env.VITE_SUPABASE_ANON_KEY ?? "sb_publishable_6bs0IPax7ctABcDJrcWW5w_3PHfgfvk";
-export const CUSTOMER_URL = (import.meta.env.VITE_CUSTOMER_URL ?? "").replace(/\/$/, "");
-export const STAFF_URL = (import.meta.env.VITE_STAFF_URL ?? "").replace(/\/$/, "");
+export const CUSTOMER_URL =
+  import.meta.env.VITE_CUSTOMER_APP_URL ||
+  "https://menu-wave-customer.vercel.app";
 
+export const STAFF_URL =
+  import.meta.env.VITE_RESTAURANT_APP_URL ||
+  "https://menu-wave-end.vercel.app";
 export const supabase = createClient(SUPABASE_URL, SUPABASE_ANON_KEY, {
   auth: {
     persistSession: true,
