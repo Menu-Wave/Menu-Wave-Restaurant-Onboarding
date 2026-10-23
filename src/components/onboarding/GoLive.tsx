@@ -25,7 +25,15 @@ export function GoLive({
       {/* NORMAL SCREEN CONTENT */}
       <div className="space-y-5 print:hidden">
         <Card>
-          <div className="mw-live-title"><span><Check size={22}/></span><div><p className="mw-kicker">GO LIVE</p><h2>{live ? `${restaurant.name} is ready.` : "Almost there"}</h2></div></div>
+          <div className="mw-live-title">
+            <span>
+              <Check size={22} />
+            </span>
+            <div>
+              <p className="mw-kicker">GO LIVE</p>
+              <h2>{live ? `${restaurant.name} is ready.` : "Almost there"}</h2>
+            </div>
+          </div>
 
           {!live && (
             <p className="text-sm text-amber-700">
@@ -36,7 +44,8 @@ export function GoLive({
 
           {live && (
             <p className="mt-1 text-sm text-slate-600">
-              Your Menu-Wave workspace is ready. Add your menu, invite your team and print your table QR codes from the management portal.
+              Your Menu-Wave workspace is ready. Add your menu, invite your team
+              and print your table QR codes from the management portal.
             </p>
           )}
 
@@ -58,7 +67,8 @@ export function GoLive({
                 rel="noreferrer"
                 className="mw-live-url"
               >
-                {customerLink} <ExternalLink size={14}/></a>
+                {customerLink} <ExternalLink size={14} />
+              </a>
             </div>
 
             {/* Restaurant management portal */}
@@ -78,7 +88,7 @@ export function GoLive({
                 rel="noreferrer"
                 className="mw-management-link"
               >
-                <LayoutDashboard size={16}/> Open management portal
+                <LayoutDashboard size={16} /> Open management portal
               </a>
 
               <p className="mt-2 text-xs text-slate-500">
@@ -89,11 +99,13 @@ export function GoLive({
           </div>
         </Card>
 
-        {/* QR PREVIEW */}
+        {/* QR PREVIEW — SCREEN ONLY */}
         <Card>
-          <div className="mb-4 flex items-center justify-between">
+          <div className="mb-4 flex items-center justify-between gap-4">
             <div>
-              <h3 className="mw-qr-heading"><QrCode size={18}/> Table QR codes</h3>
+              <h3 className="mw-qr-heading">
+                <QrCode size={18} /> Table QR codes
+              </h3>
 
               <p className="mt-1 text-xs text-slate-500">
                 Print and place the correct QR code on each restaurant table.
@@ -118,24 +130,20 @@ export function GoLive({
                   key={tableNumber}
                   className="rounded-xl border border-slate-200 p-4 text-center"
                 >
-                  {/* Restaurant name */}
                   <p className="mb-3 font-bold text-slate-900">
                     {restaurant.name}
                   </p>
 
-                  {/* QR code */}
                   <QRCodeSVG
                     value={tableLink}
                     size={128}
                     className="mx-auto"
                   />
 
-                  {/* Table number */}
                   <p className="mt-3 text-sm font-bold text-slate-900">
                     Table {tableNumber}
                   </p>
 
-                  {/* Scan instruction */}
                   <p className="mt-1 text-xs font-medium text-slate-500">
                     Scan to order
                   </p>
@@ -146,42 +154,31 @@ export function GoLive({
         </Card>
       </div>
 
-      {/* PRINT-ONLY QR CARDS */}
-      <div className="hidden print:block">
-        <div className="grid grid-cols-3 gap-6">
-          {tables.map((tableNumber) => {
-            const tableLink = `${customerLink}?table=${tableNumber}`;
+      {/* DEDICATED PRINT SHEET — HIDDEN ON SCREEN */}
+      <div className="qr-print-area" aria-hidden="true">
+        {tables.map((tableNumber) => {
+          const tableLink = `${customerLink}?table=${tableNumber}`;
 
-            return (
-              <div
-                key={tableNumber}
-                className="break-inside-avoid rounded-xl border-2 border-black p-6 text-center"
-              >
-                {/* 1. Restaurant name */}
-                <p className="mb-4 text-xl font-bold text-black">
-                  {restaurant.name}
-                </p>
+          return (
+            <article key={tableNumber} className="qr-print-card">
+              <img
+                src="/menu-wave-logo.png"
+                alt=""
+                className="qr-print-logo"
+              />
 
-                {/* 2. QR code */}
-                <QRCodeSVG
-                  value={tableLink}
-                  size={180}
-                  className="mx-auto"
-                />
+              <p className="qr-print-restaurant">{restaurant.name}</p>
 
-                {/* 3. Table number */}
-                <p className="mt-4 text-lg font-bold text-black">
-                  Table {tableNumber}
-                </p>
+              <QRCodeSVG value={tableLink} size={180} />
 
-                {/* 4. Scan instruction */}
-                <p className="mt-1 text-sm font-semibold text-black">
-                  Scan to order
-                </p>
-              </div>
-            );
-          })}
-        </div>
+              <p className="qr-print-table">Table {tableNumber}</p>
+
+              <p className="qr-print-instruction">Scan to order</p>
+
+              <p className="qr-print-brand">Powered by Menu-Wave</p>
+            </article>
+          );
+        })}
       </div>
     </>
   );
