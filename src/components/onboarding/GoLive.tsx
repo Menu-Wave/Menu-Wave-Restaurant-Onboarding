@@ -1,6 +1,9 @@
 import { QRCodeSVG } from "qrcode.react";
-import { CUSTOMER_URL, STAFF_URL, type Restaurant } from "@/lib/supabase";
+import type { Restaurant } from "@/lib/supabase";
 import { Card, btnGhost } from "./ui";
+
+const CUSTOMER_APP_URL = "https://menu-wave-customer.vercel.app";
+const RESTAURANT_APP_URL = "https://menu-wave-end.vercel.app";
 
 export function GoLive({
   restaurant,
@@ -9,20 +12,7 @@ export function GoLive({
   restaurant: Restaurant;
   live: boolean;
 }) {
-  // Customer-facing Menu-Wave application.
-  const customerBase =
-    CUSTOMER_URL || "https://menu-wave-customer.vercel.app";
-
-  // Restaurant management portal.
-  const staffBase =
-    STAFF_URL || "https://menu-wave-end.vercel.app";
-
-  // Public ordering page for this specific restaurant.
-  const customerLink = `${customerBase.replace(/\/$/, "")}/${restaurant.slug}`;
-
-  // All restaurant workers use the same management portal.
-  // Supabase authentication determines their restaurant and role.
-  const staffLink = staffBase.replace(/\/$/, "");
+  const customerLink = `${CUSTOMER_APP_URL}/${restaurant.slug}`;
 
   const tables = Array.from(
     { length: restaurant.table_count },
@@ -31,7 +21,6 @@ export function GoLive({
 
   return (
     <div className="space-y-5">
-      {/* Restaurant activated */}
       <Card>
         <h2 className="mb-1 text-xl font-bold text-slate-900">
           {live ? "🎉 Your restaurant is ready!" : "Almost there"}
@@ -46,22 +35,21 @@ export function GoLive({
 
         {live && (
           <p className="mt-1 text-sm text-slate-600">
-            Your Menu-Wave restaurant has been created successfully. You can
-            now manage your restaurant and set up your menu from the restaurant
-            management portal.
+            Your Menu-Wave restaurant has been created successfully.
+            You can now set up your menu and manage your restaurant from
+            the management portal.
           </p>
         )}
 
-        <div className="mt-6 space-y-5">
-          {/* Customer site */}
+        <div className="mt-6 space-y-4">
           <div className="rounded-xl border border-slate-200 p-4">
             <p className="font-semibold text-slate-900">
               Customer ordering site
             </p>
 
             <p className="mt-1 text-xs text-slate-500">
-              This is the public link your customers will use to view your menu
-              and place orders.
+              Share this link with customers. Your table QR codes also
+              direct customers to this ordering site.
             </p>
 
             <a
@@ -74,19 +62,18 @@ export function GoLive({
             </a>
           </div>
 
-          {/* Restaurant management */}
           <div className="rounded-xl border border-slate-200 p-4">
             <p className="font-semibold text-slate-900">
               Restaurant management portal
             </p>
 
             <p className="mt-1 text-xs text-slate-500">
-              Use the management portal to set up your menu, manage orders,
-              update prices, manage staff, and operate your restaurant.
+              Set up your menu, manage orders, update prices and operate
+              your restaurant from the Menu-Wave management portal.
             </p>
 
             <a
-              href={staffLink}
+              href={RESTAURANT_APP_URL}
               target="_blank"
               rel="noreferrer"
               className="mt-3 inline-flex rounded-lg bg-slate-900 px-4 py-2 text-sm font-semibold text-white transition hover:bg-slate-800"
@@ -95,35 +82,37 @@ export function GoLive({
             </a>
 
             <p className="mt-2 text-xs text-slate-500">
-              Sign in using the same email account you used during restaurant
-              registration. Your account is linked to this restaurant as its
-              owner.
+              Sign in using the same account you used to register your
+              restaurant.
             </p>
           </div>
         </div>
       </Card>
 
-      {/* QR codes */}
       <Card>
-        <div className="mb-2 flex items-center justify-between print:hidden">
+        <div className="mb-3 flex items-center justify-between print:hidden">
           <div>
-            <h3 className="font-bold text-slate-900">Table QR codes</h3>
+            <h3 className="font-bold text-slate-900">
+              Table QR codes
+            </h3>
 
             <p className="mt-1 text-xs text-slate-500">
-              Print and place the correct QR code on each table. Customers can
-              scan it to open your restaurant ordering page with their table
-              number.
+              Print and place the correct QR code on each restaurant table.
             </p>
           </div>
 
-          <button onClick={() => window.print()} className={btnGhost}>
+          <button
+            onClick={() => window.print()}
+            className={btnGhost}
+          >
             Print QR codes
           </button>
         </div>
 
-        <div className="mt-4 grid grid-cols-2 gap-4 sm:grid-cols-4">
+        <div className="grid grid-cols-2 gap-4 sm:grid-cols-4">
           {tables.map((tableNumber) => {
-            const tableLink = `${customerLink}?table=${tableNumber}`;
+            const tableLink =
+              `${customerLink}?table=${tableNumber}`;
 
             return (
               <div
