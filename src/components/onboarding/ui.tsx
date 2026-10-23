@@ -27,7 +27,7 @@ export function FlowVisual({ title = "One order. One smooth flow." }: { title?: 
       <svg className="mw-m-path" viewBox="0 0 720 250" fill="none" preserveAspectRatio="none">
         <path d="M42 193 C95 40 145 39 198 191 C250 38 302 38 355 191 C408 40 460 40 512 191 C560 66 615 61 680 167" stroke="rgba(255,255,255,.12)" strokeWidth="18" strokeLinecap="round"/>
         <motion.path d="M42 193 C95 40 145 39 198 191 C250 38 302 38 355 191 C408 40 460 40 512 191 C560 66 615 61 680 167" stroke="url(#waveGradient)" strokeWidth="7" strokeLinecap="round" pathLength="1" initial={{pathLength:0}} animate={{pathLength:1}} transition={{duration:2.8, repeat:Infinity, repeatDelay:.5, ease:"easeInOut"}}/>
-        <defs><linearGradient id="waveGradient"><stop stopColor="#ff5a45"/><stop offset=".55" stopColor="#f04432"/><stop offset="1" stopColor="#f2b84b"/></linearGradient></defs>
+        <defs><linearGradient id="waveGradient"><stop stopColor="#2563EB"/><stop offset=".55" stopColor="#38BDF8"/><stop offset="1" stopColor="#F59E0B"/></linearGradient></defs>
       </svg>
       <motion.span className="mw-flow-dot" animate={{offsetDistance:["0%","100%"]}} transition={{duration:4.2,repeat:Infinity,ease:"easeInOut"}} />
       <div className="mw-flow-icons">{flow.map(({icon:Icon,label},i)=><motion.div key={label} className="mw-flow-node" initial={{opacity:0,y:10}} animate={{opacity:1,y:0}} transition={{delay:.25+i*.13}}><span><Icon size={18}/></span><small>{label}</small></motion.div>)}</div>

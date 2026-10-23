@@ -41,6 +41,7 @@ export interface Restaurant {
   order_code_prefix: string;
   is_active: boolean;
   tier: Tier;
+  logo_url: string | null;
 }
 export interface Subscription {
   restaurant_id: number;
@@ -97,7 +98,7 @@ export async function loadAccount() {
   const [r, s, c] = await Promise.all([
     supabase
       .from("restaurants")
-      .select("id, name, slug, currency, table_count, order_code_prefix, is_active, tier")
+      .select("id, name, slug, currency, table_count, order_code_prefix, is_active, tier, logo_url")
       .eq("id", staff.restaurant_id)
       .single(),
     supabase
@@ -124,4 +125,27 @@ export async function uploadMenuImage(restaurantId: number, file: File): Promise
   const { error } = await supabase.storage.from("menu-images").upload(path, file, { contentType: file.type });
   if (error) throw new Error(error.message);
   return supabase.storage.from("menu-images").getPublicUrl(path).data.publicUrl;
+}
+
+
+export async function uploadRestaurantLogo(restaurantId: number, file: File): Promise<string> {
+  const allowed = ["image/jpeg", "image/png", "image/webp"];
+  if (!allowed.includes(file.type)) throw new Error("Use a JPG, PNG or WebP logo.");
+  if (file.size > 2 * 1024 * 1024) throw new Error("Logo must be under 2 MB.");
+
+  const ext =
+    file.type === "image/png" ? "png" :
+    file.type === "image/webp" ? "webp" :
+    "jpg";
+  const path = `${restaurantId}/logo.${ext}`;
+
+  const { error: uploadError } = await supabase.storage
+    .from("restaurant-logos")
+    .upload(path, file, { contentType: file.type, upsert: true });
+  if (uploadError) throw new Error(uploadError.message);
+
+  const publicUrl = supabase.storage.from("restaurant-logos").getPublicUrl(path).data.publicUrl;
+  const { error: saveError } = await supabase.rpc("set_restaurant_logo", { p_logo_url: publicUrl });
+  if (saveError) throw new Error(saveError.message);
+  return publicUrl;
 }
