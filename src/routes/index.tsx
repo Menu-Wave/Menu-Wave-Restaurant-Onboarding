@@ -126,11 +126,11 @@ function Landing() {
             <motion.div {...reveal} className="relative z-10 max-w-3xl">
               <div className="mw-eyebrow"><Sparkles size={14} /> Built for smoother restaurant service</div>
               <h1 className="mw-display mt-6">
-                Restaurant ordering,
-                <span className="mw-highlight block">without the chaos.</span>
+                Stop taking restaurant orders
+                <span className="mw-highlight block">the hard way.</span>
               </h1>
               <p className="mt-6 max-w-2xl text-base leading-7 text-[#625c57] sm:text-lg sm:leading-8">
-                From table-side ordering to kitchen preparation and business insights, Menu-Wave keeps your customers and restaurant team in one smooth flow.
+                Customers scan, order and track from their table. Your cashier and kitchen receive everything in one connected flow — while every order becomes useful business data.
               </p>
               <div className="mt-8 flex flex-col gap-3 sm:flex-row sm:items-center">
                 <Link to="/register" className="mw-button mw-button-primary mw-button-lg">Start free for 14 days <ArrowRight size={18} /></Link>
@@ -147,7 +147,7 @@ function Landing() {
                 <div className="mw-phone-top"><span>9:41</span><span className="h-2 w-14 rounded-full bg-black/80" /></div>
                 <div className="px-4 pb-4 pt-2">
                   <div className="flex items-start justify-between">
-                    <div><p className="text-[10px] font-bold uppercase tracking-[.16em] text-[#9a928b]">Table 7</p><h3 className="mt-1 text-lg font-black tracking-tight">Good evening 👋</h3></div>
+                    <div><p className="text-[10px] font-bold uppercase tracking-[.16em] text-[#9a928b]">Kemi’s Kitchen · Table 7</p><h3 className="mt-1 text-lg font-black tracking-tight">Ready to order? 👋</h3></div>
                     <div className="rounded-full bg-[#fff1e6] p-2 text-[#d94335]"><UtensilsCrossed size={16} /></div>
                   </div>
                   <div className="mt-4 rounded-2xl bg-[#1b1918] p-4 text-white">
@@ -188,6 +188,42 @@ function Landing() {
             <div><strong>One smooth flow</strong><span> from table to kitchen</span></div>
             <div><strong>Live order visibility</strong><span> for customers and staff</span></div>
             <div><strong>Useful restaurant data</strong><span> from every order</span></div>
+          </div>
+        </section>
+
+        <section className="mw-demo-section" aria-labelledby="demo-title">
+          <div className="mw-shell">
+            <motion.div {...reveal} className="mx-auto max-w-3xl text-center">
+              <span className="mw-kicker">SEE THE FLOW</span>
+              <h2 id="demo-title" className="mw-section-title mx-auto">See what happens after a customer <span className="mw-highlight">scans the table.</span></h2>
+              <p className="mw-section-copy mx-auto">The customer places the order once. Menu-Wave carries it through the restaurant — without paper tickets, repeated hand-offs or asking a waiter for every update.</p>
+            </motion.div>
+
+            <motion.div {...reveal} className="mw-demo-frame mt-12">
+              <div className="mw-demo-video-wrap">
+                <video className="mw-demo-video" autoPlay muted loop playsInline preload="metadata" aria-label="Customer scanning a restaurant QR code and ordering from a phone">
+                  <source src="/menu-wave-order-demo.mp4" type="video/mp4" />
+                </video>
+                <div className="mw-demo-video-shade" />
+                <div className="mw-demo-caption"><span className="mw-demo-pulse" /> Customer scans → browses → places order</div>
+              </div>
+
+              <div className="mw-demo-system">
+                <div className="mw-demo-system-head"><span>WHAT MENU-WAVE DOES NEXT</span><strong>One order. One live status.</strong></div>
+                <div className="mw-demo-route">
+                  {[
+                    [ShoppingBag, "Order received", "Table 7 · #MW-0142"],
+                    [CircleCheck, "Cashier sees it", "No paper hand-off"],
+                    [ChefHat, "Kitchen prepares", "Status: Preparing"],
+                    [Clock3, "Customer tracks", "Received → Ready"],
+                  ].map(([Icon, title, copy], i) => {
+                    const I = Icon as typeof ShoppingBag;
+                    return <div className="mw-demo-route-item" key={String(title)}><div className="mw-demo-route-icon"><I size={18} /></div><div><strong>{title as string}</strong><span>{copy as string}</span></div>{i < 3 && <ArrowRight className="mw-demo-route-arrow" size={16} />}</div>;
+                  })}
+                </div>
+                <div className="mw-demo-result"><BarChart3 size={18} /><div><strong>And the order becomes business data.</strong><span>Revenue, best sellers, peak periods and order performance build automatically from real activity.</span></div></div>
+              </div>
+            </motion.div>
           </div>
         </section>
 
@@ -271,7 +307,7 @@ function Landing() {
                 <div className="mt-8 space-y-2">{[LayoutDashboard, ShoppingBag, ChefHat, Users, BarChart3].map((Icon, i) => <div key={i} className={`mw-dash-nav ${i === 1 ? "mw-dash-nav-active" : ""}`}><Icon size={16} /><span className="hidden sm:inline">{["Overview", "Orders", "Kitchen", "Staff", "Analytics"][i]}</span></div>)}</div>
               </div>
               <div className="mw-dashboard-content">
-                <div className="flex items-center justify-between"><div><p className="text-xs font-bold uppercase tracking-[.15em] text-[#9b938c]">Live orders</p><h3 className="mt-1 text-xl font-black">Good evening, Eradels</h3></div><span className="rounded-full bg-[#edf8f1] px-3 py-1.5 text-xs font-bold text-[#168454]">● Open</span></div>
+                <div className="flex items-center justify-between"><div><p className="text-xs font-bold uppercase tracking-[.15em] text-[#9b938c]">Live orders</p><h3 className="mt-1 text-xl font-black">Good day, Kemi’s Kitchen</h3></div><span className="rounded-full bg-[#edf8f1] px-3 py-1.5 text-xs font-bold text-[#168454]">● Open</span></div>
                 <div className="mt-5 grid grid-cols-3 gap-2">{[["12","Active"],["7","Preparing"],["5","Ready"]].map(([v,l]) => <div key={l} className="mw-stat"><strong>{v}</strong><span>{l}</span></div>)}</div>
                 <div className="mt-4 space-y-2">{[["#MW-0142","Table 7","Preparing"],["#MW-0141","Table 3","Ready"],["#MW-0140","Table 11","Received"]].map(([id,table,status]) => <div key={id} className="mw-order-row"><div><strong>{id}</strong><span>{table}</span></div><span className={`mw-status mw-status-${status.toLowerCase()}`}>{status}</span></div>)}</div>
               </div>

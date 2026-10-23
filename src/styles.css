@@ -192,3 +192,24 @@ body { margin: 0; }
 @media (max-width: 900px) { .mw-hero { padding-top:60px; }.mw-hero-grid { grid-template-columns:1fr; }.mw-product-stage { min-height:520px;max-width:560px;width:100%;margin-inline:auto; }.mw-order-card { left:2%; }.mw-insight-card { right:2%; }.mw-dashboard-mockup { grid-template-columns:70px 1fr; } }
 @media (max-width: 640px) { .mw-shell,.mw-nav { width:min(100% - 28px,1160px); }.mw-hero { padding:50px 0 65px; }.mw-display { font-size:3.25rem; }.mw-section { padding:78px 0; }.mw-section-title { font-size:2.55rem; }.mw-product-stage { min-height:490px;transform:scale(.9);margin-top:-20px;margin-bottom:-30px; }.mw-floating-card { width:180px;padding:13px; }.mw-order-card { left:-7%;top:85px; }.mw-insight-card { right:-7%;bottom:80px; }.mw-flow-line { gap:3px; }.mw-flow-icon { width:38px;height:38px; }.mw-flow-connector { top:18px;left:calc(50% + 19px);width:calc(100% - 38px); }.mw-dashboard-mockup { min-height:400px;grid-template-columns:52px 1fr;padding:7px; }.mw-dashboard-sidebar { padding:14px 7px; }.mw-dashboard-content { padding:18px 12px; }.mw-stat { padding:10px 7px; }.mw-stat strong { font-size:16px; }.mw-analytics-wide { min-height:225px; }.mw-final-cta { border-radius:26px;padding:72px 20px; } }
 @media (prefers-reduced-motion: reduce) { html { scroll-behavior:auto; } *,*::before,*::after { animation-duration:.01ms!important;animation-iteration-count:1!important;transition-duration:.01ms!important;scroll-behavior:auto!important; } }
+.mw-demo-section { padding:108px 0; background:#fff; }
+.mw-demo-frame { overflow:hidden; display:grid; grid-template-columns:1.08fr .92fr; border:1px solid #e8ddd3; border-radius:32px; background:#191817; box-shadow:0 30px 80px rgba(50,29,17,.13); }
+.mw-demo-video-wrap { position:relative; min-height:500px; overflow:hidden; background:#0e0d0c; }
+.mw-demo-video { width:100%; height:100%; min-height:500px; object-fit:cover; display:block; }
+.mw-demo-video-shade { position:absolute; inset:0; background:linear-gradient(180deg,transparent 58%,rgba(12,10,9,.78)); pointer-events:none; }
+.mw-demo-caption { position:absolute; left:22px; bottom:20px; display:flex; align-items:center; gap:9px; border:1px solid rgba(255,255,255,.14); border-radius:999px; background:rgba(20,18,16,.7); padding:9px 13px; color:#fff; font-size:12px; font-weight:800; backdrop-filter:blur(12px); }
+.mw-demo-pulse { width:8px; height:8px; border-radius:50%; background:#f2b84b; box-shadow:0 0 0 5px rgba(242,184,75,.13); }
+.mw-demo-system { padding:34px; color:#fff; background:radial-gradient(circle at 100% 0,rgba(217,67,53,.16),transparent 34%),#191817; }
+.mw-demo-system-head span { display:block; color:#f2b84b; font-size:9px; font-weight:950; letter-spacing:.17em; }
+.mw-demo-system-head strong { display:block; margin-top:8px; font-size:25px; line-height:1.08; letter-spacing:-.035em; }
+.mw-demo-route { margin-top:28px; }
+.mw-demo-route-item { position:relative; display:flex; align-items:center; gap:13px; min-height:72px; border-bottom:1px solid rgba(255,255,255,.08); }
+.mw-demo-route-icon { display:flex; width:40px; height:40px; flex:0 0 auto; align-items:center; justify-content:center; border-radius:13px; background:linear-gradient(135deg,#d94335,#e89d35); color:#fff; box-shadow:0 10px 25px rgba(217,67,53,.17); }
+.mw-demo-route-item strong { display:block; font-size:13px; }
+.mw-demo-route-item span { display:block; margin-top:3px; color:rgba(255,255,255,.48); font-size:11px; }
+.mw-demo-route-arrow { margin-left:auto; color:rgba(255,255,255,.22); }
+.mw-demo-result { display:flex; gap:12px; margin-top:26px; border:1px solid rgba(242,184,75,.16); border-radius:17px; background:rgba(242,184,75,.07); padding:15px; color:#f2b84b; }
+.mw-demo-result strong { display:block; color:#fff; font-size:12px; }
+.mw-demo-result span { display:block; margin-top:4px; color:rgba(255,255,255,.48); font-size:10px; line-height:1.55; }
+@media (max-width:900px) { .mw-demo-frame { grid-template-columns:1fr; }.mw-demo-video-wrap,.mw-demo-video { min-height:420px; }.mw-demo-system { padding:28px; } }
+@media (max-width:640px) { .mw-demo-section { padding:78px 0; }.mw-demo-frame { border-radius:24px; }.mw-demo-video-wrap,.mw-demo-video { min-height:300px; }.mw-demo-system { padding:22px 18px; }.mw-demo-caption { left:14px; right:14px; bottom:14px; justify-content:center; font-size:10px; }.mw-demo-system-head strong { font-size:21px; } }
