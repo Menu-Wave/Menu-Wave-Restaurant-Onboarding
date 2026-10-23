@@ -6,35 +6,35 @@
 
 
 
-@custom-variant dark (&:is(.dark \*));
+@custom-variant dark (&:is(.dark *));
 
 
 
-/\*
+/*
 
- \* Design system definition.
+ * Design system definition.
 
- \*
+ *
 
- \* The @theme inline block maps CSS custom properties to Tailwind utility
+ * The @theme inline block maps CSS custom properties to Tailwind utility
 
- \* classes (e.g. --color-primary -> bg-primary, text-primary).
+ * classes (e.g. --color-primary -> bg-primary, text-primary).
 
- \*
+ *
 
- \* The :root and .dark blocks define the actual color values using oklch.
+ * The :root and .dark blocks define the actual color values using oklch.
 
- \* All colors MUST use oklch format.
+ * All colors MUST use oklch format.
 
- \*
+ *
 
- \* To add a new semantic color:
+ * To add a new semantic color:
 
- \* 1. Add the variable to :root (light value) and .dark (dark value)
+ * 1. Add the variable to :root (light value) and .dark (dark value)
 
- \* 2. Register it in @theme inline as --color-\<name>: var(--\<name>)
+ * 2. Register it in @theme inline as --color-<name>: var(--<name>)
 
- \*/
+ */
 
 
 
@@ -268,7 +268,7 @@
 
 @layer base {
 
-  \* {
+  * {
 
     border-color: var(--color-border);
 
@@ -288,7 +288,7 @@
 
 
 
-/\* Menu-Wave public site \*/
+/* Menu-Wave public site */
 
 html { scroll-behavior: smooth; }
 
@@ -318,7 +318,7 @@ body { margin: 0; }
 
 .brand-mark-wave { position:absolute; right:-3px; bottom:6px; width:25px; height:10px; border-radius:50%; border-top:4px solid #ffd15a; transform:rotate(-8deg); }
 
-.mw-button { display:inline-flex; align-items:center; gap:8px; min-height:42px; padding:0 16px; border-radius:13px; font-size:14px; font-weight:800; transition:transform .2s ease, box-shadow .2s ease, *background* .2s ease; }
+.mw-button { display:inline-flex; align-items:center; gap:8px; min-height:42px; padding:0 16px; border-radius:13px; font-size:14px; font-weight:800; transition:transform .2s ease, box-shadow .2s ease, background .2s ease; }
 
 .mw-button:hover { transform:translateY(-1px); }.mw-button:active { transform:translateY(0); }
 
@@ -384,7 +384,7 @@ body { margin: 0; }
 
 @media (max-width: 640px) { .mw-shell,.mw-nav { width:min(100% - 28px,1160px); }.mw-hero { padding:50px 0 65px; }.mw-display { font-size:3.25rem; }.mw-section { padding:78px 0; }.mw-section-title { font-size:2.55rem; }.mw-product-stage { min-height:490px;transform:scale(.9);margin-top:-20px;margin-bottom:-30px; }.mw-floating-card { width:180px;padding:13px; }.mw-order-card { left:-7%;top:85px; }.mw-insight-card { right:-7%;bottom:80px; }.mw-flow-line { gap:3px; }.mw-flow-icon { width:38px;height:38px; }.mw-flow-connector { top:18px;left:calc(50% + 19px);width:calc(100% - 38px); }.mw-dashboard-mockup { min-height:400px;grid-template-columns:52px 1fr;padding:7px; }.mw-dashboard-sidebar { padding:14px 7px; }.mw-dashboard-content { padding:18px 12px; }.mw-stat { padding:10px 7px; }.mw-stat strong { font-size:16px; }.mw-analytics-wide { min-height:225px; }.mw-final-cta { border-radius:26px;padding:72px 20px; } }
 
-@media (prefers-reduced-motion: reduce) { html { scroll-behavior:auto; } \*,\*::before,\*::after { animation-duration:.01ms!important;animation-iteration-count:1!important;transition-duration:.01ms!important;scroll-behavior:auto!important; } }
+@media (prefers-reduced-motion: reduce) { html { scroll-behavior:auto; } *,*::before,*::after { animation-duration:.01ms!important;animation-iteration-count:1!important;transition-duration:.01ms!important;scroll-behavior:auto!important; } }
 
 .mw-demo-section { padding:108px 0; background:#fff; }
 
@@ -430,7 +430,7 @@ body { margin: 0; }
 
 
 
-/\* Mobile-first refinement — 375px to 640px \*/
+/* Mobile-first refinement — 375px to 640px */
 
 @media (max-width: 640px) {
 
@@ -462,7 +462,7 @@ body { margin: 0; }
 
 
 
-  /\* Keep the product proof visible without consuming another full viewport. \*/
+  /* Keep the product proof visible without consuming another full viewport. */
 
   .mw-product-stage { min-height:365px; height:365px; max-width:360px; transform:none; margin:0 auto -4px; overflow:visible; }
 
@@ -562,7 +562,7 @@ body { margin: 0; }
 
 
 
-  /\* Dashboard becomes a focused mobile card instead of a compressed desktop dashboard. \*/
+  /* Dashboard becomes a focused mobile card instead of a compressed desktop dashboard. */
 
   .mw-dashboard-mockup { min-height:0; display:block; border-radius:22px; padding:8px; transform:none; }
 
@@ -620,7 +620,7 @@ body { margin: 0; }
 
 
 
-/\* ===== Auth + onboarding additions ===== \*/
+/* ===== Auth + onboarding additions ===== */
 
 .mw-brand{display:inline-flex;align-items:center;gap:.7rem;color:#0f172a;font-weight:900;letter-spacing:-.03em;text-decoration:none}.mw-brand-mark{display:grid;width:38px;height:38px;place-items:center;border-radius:12px;background:linear-gradient(135deg,#2563eb 0%,#ef4b35 55%,#f59e0b 100%);box-shadow:0 10px 24px rgba(37,99,235,.2);color:#fff;font-size:16px;font-weight:950;transform:skewX(-7deg)}.mw-brand-mark span{transform:skewX(7deg)}
 
@@ -638,7 +638,7 @@ body { margin: 0; }
 
 
 
-/\* =========================================================
+/* =========================================================
 
    MENU-WAVE — TABLE QR PRINT SHEETS
 
@@ -646,7 +646,7 @@ body { margin: 0; }
 
    below is exposed to the browser when printing.
 
-   ========================================================= \*/
+   ========================================================= */
 
 
 
@@ -700,9 +700,9 @@ body { margin: 0; }
 
 
 
-  /\* Do not let the onboarding shell consume printed pages. \*/
+  /* Do not let the onboarding shell consume printed pages. */
 
-  body > \* {
+  body > * {
 
     min-height: 0 !important;
 
@@ -710,7 +710,7 @@ body { margin: 0; }
 
 
 
-  body \* {
+  body * {
 
     visibility: hidden !important;
 
@@ -720,7 +720,7 @@ body { margin: 0; }
 
   .qr-print-area,
 
-  .qr-print-area \* {
+  .qr-print-area * {
 
     visibility: visible !important;
 
@@ -904,9 +904,9 @@ body { margin: 0; }
 
 
 
-  .qr-print-area \*,
+  .qr-print-area *,
 
-  .qr-print-card \* {
+  .qr-print-card * {
 
     animation: none !important;
 
@@ -922,7 +922,7 @@ body { margin: 0; }
 
 
 
-/\* Menu-Wave 2026 brand refresh + restaurant identity \*/
+/* Menu-Wave 2026 brand refresh + restaurant identity */
 
 .mw-logo-field{margin-bottom:17px;border:1px solid #e2e8f0;border-radius:16px;background:#f8fafc;padding:15px}
 
