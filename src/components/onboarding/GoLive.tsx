@@ -21,7 +21,7 @@ export function GoLive({
 
   return (
     <>
-      {/* Normal screen content */}
+      {/* NORMAL SCREEN CONTENT */}
       <div className="space-y-5 print:hidden">
         <Card>
           <h2 className="mb-1 text-xl font-bold text-slate-900">
@@ -44,6 +44,7 @@ export function GoLive({
           )}
 
           <div className="mt-6 space-y-4">
+            {/* Customer ordering site */}
             <div className="rounded-xl border border-slate-200 p-4">
               <p className="font-semibold text-slate-900">
                 Customer ordering site
@@ -64,6 +65,7 @@ export function GoLive({
               </a>
             </div>
 
+            {/* Restaurant management portal */}
             <div className="rounded-xl border border-slate-200 p-4">
               <p className="font-semibold text-slate-900">
                 Restaurant management portal
@@ -91,6 +93,7 @@ export function GoLive({
           </div>
         </Card>
 
+        {/* QR PREVIEW */}
         <Card>
           <div className="mb-4 flex items-center justify-between">
             <div>
@@ -119,20 +122,28 @@ export function GoLive({
               return (
                 <div
                   key={tableNumber}
-                  className="rounded-xl border border-slate-200 p-3 text-center"
+                  className="rounded-xl border border-slate-200 p-4 text-center"
                 >
+                  {/* Restaurant name */}
+                  <p className="mb-3 font-bold text-slate-900">
+                    {restaurant.name}
+                  </p>
+
+                  {/* QR code */}
                   <QRCodeSVG
                     value={tableLink}
                     size={128}
                     className="mx-auto"
                   />
 
-                  <p className="mt-2 text-sm font-bold text-slate-900">
+                  {/* Table number */}
+                  <p className="mt-3 text-sm font-bold text-slate-900">
                     Table {tableNumber}
                   </p>
 
-                  <p className="text-[10px] text-slate-500">
-                    {restaurant.name}
+                  {/* Scan instruction */}
+                  <p className="mt-1 text-xs font-medium text-slate-500">
+                    Scan to order
                   </p>
                 </div>
               );
@@ -141,46 +152,36 @@ export function GoLive({
         </Card>
       </div>
 
-      {/* PRINT-ONLY QR SHEET */}
+      {/* PRINT-ONLY QR CARDS */}
       <div className="hidden print:block">
-        <div className="mb-6 text-center">
-          <h1 className="text-2xl font-bold text-black">
-            {restaurant.name}
-          </h1>
-
-          <p className="mt-1 text-sm text-black">
-            Menu-Wave Table QR Codes
-          </p>
-
-          <p className="mt-1 text-xs text-black">
-            Scan the QR code on your table to view the menu and place an order.
-          </p>
-        </div>
-
-        <div className="grid grid-cols-3 gap-5">
+        <div className="grid grid-cols-3 gap-6">
           {tables.map((tableNumber) => {
             const tableLink = `${customerLink}?table=${tableNumber}`;
 
             return (
               <div
                 key={tableNumber}
-                className="break-inside-avoid rounded-xl border-2 border-black p-5 text-center"
+                className="break-inside-avoid rounded-xl border-2 border-black p-6 text-center"
               >
-                <p className="mb-3 text-lg font-bold text-black">
-                  Table {tableNumber}
-                </p>
-
-                <QRCodeSVG
-                  value={tableLink}
-                  size={170}
-                  className="mx-auto"
-                />
-
-                <p className="mt-3 text-sm font-bold text-black">
+                {/* 1. Restaurant name */}
+                <p className="mb-4 text-xl font-bold text-black">
                   {restaurant.name}
                 </p>
 
-                <p className="mt-1 text-xs text-black">
+                {/* 2. QR code */}
+                <QRCodeSVG
+                  value={tableLink}
+                  size={180}
+                  className="mx-auto"
+                />
+
+                {/* 3. Table number */}
+                <p className="mt-4 text-lg font-bold text-black">
+                  Table {tableNumber}
+                </p>
+
+                {/* 4. Scan instruction */}
+                <p className="mt-1 text-sm font-semibold text-black">
                   Scan to order
                 </p>
               </div>
