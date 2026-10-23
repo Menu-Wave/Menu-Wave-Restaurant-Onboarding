@@ -49,5 +49,5 @@ export function Field({ label, hint, children }: { label: string; hint?: string;
 export function ErrorBox({ message }: { message: string | null }) { return message ? <p className="mw-error">{message}</p> : null; }
 export function Card({ children, className = "" }: { children: ReactNode; className?: string }) { return <div className={`mw-card ${className}`}>{children}</div>; }
 export function Shell({ children, wide = false }: { children: ReactNode; wide?: boolean }) {
-  return <div className="mw-shell"><header className="mw-shell-header"><div className={wide ? "mw-shell-inner mw-shell-wide" : "mw-shell-inner"}><BrandMark/><span className="mw-shell-note">Restaurant setup</span></div></header><main className={wide ? "mw-shell-main mw-shell-wide" : "mw-shell-main"}>{children}</main></div>;
+  return <div className="mw-onboard-shell"><header className="mw-shell-header"><div className={wide ? "mw-shell-inner mw-shell-wide" : "mw-shell-inner"}><BrandMark/><span className="mw-shell-note">Restaurant setup</span></div></header><main className={wide ? "mw-shell-main mw-shell-wide" : "mw-shell-main"}>{children}</main></div>;
 }
