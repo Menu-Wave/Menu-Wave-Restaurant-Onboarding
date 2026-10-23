@@ -1,6 +1,7 @@
 import { QRCodeSVG } from "qrcode.react";
 import type { Restaurant } from "@/lib/supabase";
 import { Card, btnGhost } from "./ui";
+import { Check, ExternalLink, LayoutDashboard, QrCode } from "lucide-react";
 
 const CUSTOMER_APP_URL = "https://menu-wave-customer.vercel.app";
 const RESTAURANT_APP_URL = "https://menu-wave-end.vercel.app";
@@ -24,9 +25,7 @@ export function GoLive({
       {/* NORMAL SCREEN CONTENT */}
       <div className="space-y-5 print:hidden">
         <Card>
-          <h2 className="mb-1 text-xl font-bold text-slate-900">
-            {live ? "🎉 Your restaurant is ready!" : "Almost there"}
-          </h2>
+          <div className="mw-live-title"><span><Check size={22}/></span><div><p className="mw-kicker">GO LIVE</p><h2>{live ? `${restaurant.name} is ready.` : "Almost there"}</h2></div></div>
 
           {!live && (
             <p className="text-sm text-amber-700">
@@ -37,15 +36,13 @@ export function GoLive({
 
           {live && (
             <p className="mt-1 text-sm text-slate-600">
-              Your Menu-Wave restaurant has been created successfully. You can
-              now set up your menu and manage your restaurant from the
-              management portal.
+              Your Menu-Wave workspace is ready. Add your menu, invite your team and print your table QR codes from the management portal.
             </p>
           )}
 
           <div className="mt-6 space-y-4">
             {/* Customer ordering site */}
-            <div className="rounded-xl border border-slate-200 p-4">
+            <div className="mw-live-link-card">
               <p className="font-semibold text-slate-900">
                 Customer ordering site
               </p>
@@ -59,14 +56,13 @@ export function GoLive({
                 href={customerLink}
                 target="_blank"
                 rel="noreferrer"
-                className="mt-2 block break-all text-sm font-medium text-red-600 underline"
+                className="mw-live-url"
               >
-                {customerLink}
-              </a>
+                {customerLink} <ExternalLink size={14}/></a>
             </div>
 
             {/* Restaurant management portal */}
-            <div className="rounded-xl border border-slate-200 p-4">
+            <div className="mw-live-link-card">
               <p className="font-semibold text-slate-900">
                 Restaurant management portal
               </p>
@@ -80,9 +76,9 @@ export function GoLive({
                 href={RESTAURANT_APP_URL}
                 target="_blank"
                 rel="noreferrer"
-                className="mt-3 inline-flex rounded-lg bg-slate-900 px-4 py-2 text-sm font-semibold text-white transition hover:bg-slate-800"
+                className="mw-management-link"
               >
-                Manage restaurant
+                <LayoutDashboard size={16}/> Open management portal
               </a>
 
               <p className="mt-2 text-xs text-slate-500">
@@ -97,9 +93,7 @@ export function GoLive({
         <Card>
           <div className="mb-4 flex items-center justify-between">
             <div>
-              <h3 className="font-bold text-slate-900">
-                Table QR codes
-              </h3>
+              <h3 className="mw-qr-heading"><QrCode size={18}/> Table QR codes</h3>
 
               <p className="mt-1 text-xs text-slate-500">
                 Print and place the correct QR code on each restaurant table.

@@ -48,10 +48,10 @@ function Dashboard() {
   return (
     <Shell wide>
       <div className="mb-5 flex flex-wrap items-center justify-between gap-3 print:hidden">
-        <h1 className="text-2xl font-extrabold text-slate-900">{restaurant.name}</h1>
+        <div><p className="mw-kicker">RESTAURANT LAUNCH HUB</p><h1 className="text-2xl font-extrabold text-slate-900">Good day, {restaurant.name}.</h1><p className="mt-1 text-sm text-slate-500">Your links, QR codes and subscription status in one place.</p></div>
         <div className="flex gap-2">
           <button onClick={() => navigate({ to: "/onboarding" })} className={btnGhost}>
-            Edit menu
+            Review setup
           </button>
           <button
             onClick={async () => {
