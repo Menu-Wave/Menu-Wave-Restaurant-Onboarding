@@ -51,6 +51,6 @@ export function PlanStep({ restaurant, itemCount, onBack, onStarted }: { restaur
         {tooSmall && <p className="mt-3 text-xs text-amber-700">Your menu or table count is above this plan's limits.</p>}
         <button onClick={()=>choose(p)} disabled={!!busy||tooSmall} className={`${btnPrimary} mt-4`}>{busy===p.code?"Starting…":`Start ${p.name} trial`}</button>
       </div>})}</div>
-    <div className="mt-5"><button onClick={onBack} className={btnGhost}>Back to menu</button></div>
+    <div className="mt-5"><button onClick={onBack} className={btnGhost}>Back to Restaurant</button></div>
   </div>;
 }
