@@ -227,6 +227,12 @@ export function RestaurantStep({ onDone }: { onDone: () => void }) {
         <Field label="Currency">
           <select value={currency} onChange={(e) => setCurrency(e.target.value)} className={inputCls}>
             <option value="NGN">Nigerian Naira (₦)</option>
+            <option value="GHS">Ghanaian Cedi (GH₵)</option>
+            <option value="USD">US Dollar ($)</option>
+            <option value="GBP">British Pound (£)</option>
+            <option value="EUR">Euro (€)</option>
+            <option value="KES">Kenyan Shilling (KSh)</option>
+            <option value="ZAR">South African Rand (R)</option>
           </select>
         </Field>
 
@@ -238,3 +244,4 @@ export function RestaurantStep({ onDone }: { onDone: () => void }) {
     </Card>
   );
 }
+
